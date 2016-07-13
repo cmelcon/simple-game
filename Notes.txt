@@ -1,0 +1,60 @@
+Arrays .shift (delete the first element)
+	.push (add a new element)
+
+Objects .delete (remove a property)
+	.name of the property (add a property)
+
+
+
+
+ADD OBJECTS TO A VARIABLE
+inside the object
+addCritter: function(name, type, species, lenght){               Note: this == object
+  this[nameOfProperty] = {atribute: value, ....}
+}
+
+outside the object
+function addCritter(conteiner, name, type, species, lenght){
+	conteiner[nameOfProperty] = {atribute: value, ....),
+}
+
+
+DELETE OBJECTS FROM A VARIABLE
+function (name){
+ delete this[name],
+
+
+ADD PROPERTIES TO PROTOTYPES
+String.prototype.countAll = function (){
+
+
+}
+
+
+
+
+function nameObject (a, b, c){
+ 	this.a = a;
+	this.b = b;
+	this.c = c;
+
+}
+nameObject.prototype.speak = function(){
+	
+}
+
+var name = new nameObject(a, b, c);
+
+
+
+function factorial (n){
+	if (n <= 1) return 1;
+return factorial(n-1)*n;
+}
+
+
+
+function posInt(n){
+if (n === 1) return 1;
+return n + posInt(n-1)
+}

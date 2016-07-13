@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <title>Simple Game</title>
+    <style>
+      body{
+        background-color: rgb(240,248,255);
+      }
+
+      canvas{
+        width: 600px;
+        height: 480px;
+        display: block;
+        margin: 0 auto;
+        background-color: white;
+      }
+    </style>
+  </head>
+  <body>
+    <canvas></canvas>
+    <script>
+      var canvas = document.getElementsByTagName("canvas")[0];
+      var ctx = canvas.getContext("2d");
+      var player = new Player(0,0);
+
+      var keyboard = {
+        up: false, down: false, left: false, rigth: false
+      };
+
+      gameLoop();
+
+      function gameLoop(){
+        ctx.fillStyle = "white";
+        ctx.fillRect(0,0,canvas.width, canvas.height);
+        player.update();
+        player.draw();
+        window.requestAnimationFrame(gameLoop);
+
+      };
+
+
+      function Player(x,y){
+        this.x = x;
+        this.y = y;
+        this.update = function(){
+          if (keyboard.up) this.y--;
+          if (keyboard.down) this.y++;
+          if (keyboard.left) this.x--;
+          if (keyboard.right) this.x++;
+        };
+        this.draw = function(){
+          ctx.fillStyle = "black";
+          ctx.fillRect(this.x, this.y, 50, 50);
+        };
+
+
+        document.addEventListener("keydown", function(e){
+          if (e.code == "ArrowUp") keyboard.up = true;
+          if (e.code == "ArrowDown") keyboard.down = true;
+          if (e.code == "ArrowLeft") keyboard.left = true;
+          if (e.code == "ArrowRight") keyboard.right = true;
+
+        });
+
+        document.addEventListener("keyup", function(e){
+          if (e.code == "ArrowUp") keyboard.up = false;
+          if (e.code == "ArrowDown") keyboard.down = false;
+          if (e.code == "ArrowLeft") keyboard.left = false;
+          if (e.code == "ArrowRight") keyboard.right = false;
+
+        });
+      };
+    </script>
+  </body>
+</html>
